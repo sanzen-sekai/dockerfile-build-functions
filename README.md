@@ -6,6 +6,7 @@ docker build utility functions
 
 ```bash
 # build.sh
+
 . dockerfile-build-functions.sh
 
 build_<REPOSITORY_NAME>_main(){
@@ -13,7 +14,7 @@ build_<REPOSITORY_NAME>_main(){
 	repository=<REPOSITORY_NAME>
 	build_image "$@"
 }
-build_<REPOSITORY_NAME>_mainl "$@"
+build_<REPOSITORY_NAME>_main "$@"
 ```
 
 ```bash
