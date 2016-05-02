@@ -5,6 +5,7 @@ docker build utility functions
 ## Usage
 
 ```bash
+# build.sh
 . dockerfile_build_functions.sh
 
 build_<REPOSITORY_NAME>_main(){
@@ -13,6 +14,13 @@ build_<REPOSITORY_NAME>_main(){
 	build_image "$@"
 }
 build_<REPOSITORY_NAME>_mainl "$@"
+```
+
+```bash
+./build.sh    # minor version up
+./build.sh -m # major version up
+./build.sh -p # patch version up
+./build.sh -b # beta version up => minor 999 version's patch version up
 ```
 
 ## Installation
