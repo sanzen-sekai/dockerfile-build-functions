@@ -6,7 +6,7 @@ docker build utility functions
 
 ```bash
 # build.sh
-. dockerfile_build_functions.sh
+. dockerfile-build-functions.sh
 
 build_<REPOSITORY_NAME>_main(){
 	local repository
