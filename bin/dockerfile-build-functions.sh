@@ -30,11 +30,18 @@ dockerfile_build_image(){
   case "$confirm" in
     y*)
       echo "version: $version build start..."
-      docker build --rm -t $repository:$version .
+      dockerfile_build_pre && docker build --rm -t $repository:$version . && dockerfile_build_post
       ;;
     *)
       echo "abort"
       exit
       ;;
   esac
+}
+
+dockerfile_build_pre(){
+  : # override in build.sh
+}
+dockerfile_build_post(){
+  : # override in build.sh
 }
