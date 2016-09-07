@@ -45,3 +45,16 @@ dockerfile_build_post(){
 
 dockerfile_build_image <REPOSITORY_NAME> "$@"
 ```
+
+## push
+
+```bash
+# build.sh
+. dockerfile-build-functions.sh
+
+dockerfile_build_post(){
+  dockerfile_build_push <REPOSITORY_URL>
+}
+
+dockerfile_build_image <REPOSITORY_NAME> "$@"
+```
