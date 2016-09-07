@@ -1,3 +1,5 @@
+#!/bin/bash
+
 . version-functions.sh
 
 dockerfile_build_image(){
@@ -24,6 +26,23 @@ dockerfile_build_image(){
   fi
 
   version_build_next $mode $last
+
+  local branch
+  branch=$(git symbolic-ref --short HEAD)
+  if [ -n "$branch" ]; then
+    if [ "$branch" != master ]; then
+      version=${version}.${branch}
+
+      read -p "branch version: $version. OK? [Y/n] " confirm
+      case $confirm in
+        Y*|y*)
+          ;;
+        *)
+          echo abort
+          return
+      esac
+    fi
+  fi
   echo "version: $version"
 
   read -p "OK? [y/n] " confirm
@@ -34,7 +53,7 @@ dockerfile_build_image(){
       ;;
     *)
       echo "abort"
-      exit
+      return
       ;;
   esac
 }
@@ -44,4 +63,13 @@ dockerfile_build_pre(){
 }
 dockerfile_build_post(){
   : # override in build.sh
+}
+
+dockerfile_build_push(){
+  local registory
+  registory=$1
+  if [ -n "$1" ]; then
+    docker tag $repository:$version $registory/$repository:$version
+    docker push $registory/$repository:$version
+  fi
 }
