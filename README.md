@@ -33,12 +33,12 @@ PATH=$PATH:/path/to/dockerfile-build-functions/bin
 . dockerfile-build-functions.sh
 
 dockerfile_build_pre(){
-  # pre build 
+  # pre build
   # if you want cancel, return non-zero value
   echo $version # => build version
 }
 dockerfile_build_post(){
-  # post build 
+  # post build
   # if build failed, this function not execute
   echo $version # => build version
 }
