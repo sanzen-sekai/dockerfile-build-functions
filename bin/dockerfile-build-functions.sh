@@ -32,15 +32,7 @@ dockerfile_build_image(){
   if [ -n "$branch" ]; then
     if [ "$branch" != master ]; then
       version=${version}.${branch}
-
-      read -p "branch version: $version. OK? [Y/n] " confirm
-      case $confirm in
-        Y*|y*)
-          ;;
-        *)
-          echo abort
-          return
-      esac
+      echo "branch build"
     fi
   fi
   echo "version: $version"
