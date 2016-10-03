@@ -25,7 +25,7 @@ dockerfile_build_image(){
     last=$(docker images --format "{{.Tag}}" $repository | sort | tail -1)
   fi
 
-  version_build_next $mode $last
+  version_build_next "$mode" "$last"
 
   local branch
   branch=$(git symbolic-ref --short HEAD)
