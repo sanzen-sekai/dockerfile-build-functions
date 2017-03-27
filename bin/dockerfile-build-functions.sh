@@ -22,7 +22,7 @@ dockerfile_build_image(){
     mode=patch
   fi
   if [ -z "$last" ]; then
-    last=$(docker images --format "{{.Tag}}" $repository | sort | tail -1)
+    last=$(docker images --format "{{.Tag}}" $repository | head -1)
   fi
 
   version_build_next "$mode" "$last"
